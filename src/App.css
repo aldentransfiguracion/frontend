@@ -1,44 +1,32 @@
+body {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.App {
+.title {
   text-align: center;
+  margin-bottom: 20px;
+  background-color: rgb(155, 223, 240);
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.title h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.title p {
+  font-size: 16px;
+  color: #666;
 }
 
 .team-list {
@@ -49,9 +37,24 @@
 }
 
 .team-card {
-  border: 1px solid #ccc;
+  background-color: #f9f9f9;
   border-radius: 5px;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 300px;
-  margin-bottom: 20px;
+}
+
+.team-card h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.team-card p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.team-card .location {
+  font-size: 14px;
+  color: #666;
 }

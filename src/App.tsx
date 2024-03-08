@@ -1,52 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
+const sport = require('./teams.json');
 
 interface Team {
+  tid: number;
+  cid: number;
+  did: number;
   school: string;
   name: string;
+  abbrev: string;
+  pop: number;
   city: string;
   state: string;
+  latitude: number;
+  longitude: number;
 }
 
-function App() {
-  const [teams, setTeams] = useState<Team[]>([]);
-
-  useEffect(() => {
-    fetchTeams();
-  }, []);
-
-  const fetchTeams = async () => {
-    try {
-      const response = await fetch('teams.json');
-      const data = await response.json();
-      setTeams(data.teams);
-    } catch (error) {
-      console.log('Error fetching teams:', error);
-    }
-  };
-
+function Title() {
   return (
-    <div className="App">
-      <header>
-        <h1>March Madness College Basketball Teams</h1>
-      </header>
-      <div className="team-list">
-        {teams.map((team, index) => (
-          <TeamCard key={index} team={team} />
-        ))}
-      </div>
+    <div className="title">
+      <h1>Welcome to College Basketball Teams</h1>
+      <p>Explore the teams competing in college basketball</p>
     </div>
   );
 }
 
-function TeamCard({ team }: { team: Team }) {
+class TeamCard extends React.Component<Team> {
+  render() {
+    const oneTeam = this.props;
+
+    return (
+      <div className="team-card">
+        <h2>{oneTeam.school}</h2>
+        <p>Mascot: {oneTeam.name}</p>
+        <p>City: {oneTeam.city}</p>
+        <p>State: {oneTeam.state}</p>
+      </div>
+    );
+  }
+}
+
+function TeamList() {
   return (
-    <div className="team-card">
-      <h2>{team.school}</h2>
-      <p>Mascot: {team.name}</p>
-      <p>
-        {team.city}, {team.state}
-      </p>
+    <div className="team-list">
+      {sport.teams.map((TeamNum: Team) => (
+        <TeamCard key={TeamNum.tid} {...TeamNum} />
+      ))}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="App">
+      <Title />
+      <TeamList />
     </div>
   );
 }
